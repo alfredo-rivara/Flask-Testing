@@ -27,7 +27,7 @@ services:
             sh -c "pip install -r requirements.txt &&
                    echo 'Corriendo test...' &&
                    sleep 5 &&
-                   pytest -v"
+                   pytest -v --md-report --md-report-output=test_report.md"
         depends_on:
             - web-app
             - selenium-hub

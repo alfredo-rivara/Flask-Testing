@@ -10,7 +10,7 @@ def driver():
     chrome_options = Options()
 
     driver = webdriver.Remote(
-        command_executor="http://localhost:4444/wd/hub",
+        command_executor="http://selenium-hub:4444/wd/hub",
         options=chrome_options
     )
 
@@ -20,7 +20,7 @@ def driver():
     driver.quit()
 
 def test_home_page_content(driver):
-    url = "http://127.0.0.1:5000"
+    url = "http://web-app:5000"
     print(f"Navigating to {url}")
     driver.get(url)
 
