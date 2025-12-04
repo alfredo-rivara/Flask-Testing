@@ -1,0 +1,37 @@
+services:
+
+    #1. Flask
+    web-app:
+        build: ./app
+        ports:
+            - "5000:5000"
+        networks:
+            - qa-network
+
+    #2. Selenium
+    selenium-hub:
+        image: selenium/standalone-chrome:latest
+        ports:
+            - "4444:4444"
+        shm_size: "2gb"
+        networks:
+            - qa-network
+
+    #3. Test Runner
+    test-runner:
+        image: python:3.12.6
+        volumes:
+            - ./tests:/tests
+        working_dir: /tests
+        command: >
+            sh -c "pip install -r requirements.txt &&
+                   echo 'Corriendo test...' &&
+                   sleep 5 &&
+                   pytest -v"
+        depends_on:
+            - web-app
+            - selenium-hub
+        networks:
+            - qa-network
+networks:
+    qa-network:
