@@ -28,5 +28,5 @@ def test_home_page_content(driver):
     heading = driver.find_element(By.ID, "welcome-message")
 
     #QA check
-    assert heading.text == "Hola! Bienvenido QA Testing de Flask"
+    assert heading.text == "Mining Consulting QA Testing"
     print("Test exitoso")
