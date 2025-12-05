@@ -2,7 +2,8 @@ services:
 
     #1. Flask
     web-app:
-        build: ./app
+        build: ${APP_CONTEXT:-./app}
+        image: ${APP_IMAGE:-webapp:latest}
         ports:
             - "5000:5000"
         networks:
@@ -22,9 +23,12 @@ services:
         image: python:3.12.6
         volumes:
             - ./tests:/tests
+            - ${APP_CONTEXT:-./app}:/app
+        environment:
+            - PYTHONPATH=/app
         working_dir: /tests
         command: >
-            sh -c "pip install -r requirements.txt &&
+            sh -c "pip install -r requirements.txt -r /app/requirements.txt &&
                    echo 'Corriendo test...' &&
                    sleep 5 &&
                    pytest -v --md-report --md-report-output=test_report.md"

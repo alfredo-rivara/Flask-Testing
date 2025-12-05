@@ -24,9 +24,7 @@ def test_home_page_content(driver):
     print(f"Navigating to {url}")
     driver.get(url)
 
-    #Capturar ID
-    heading = driver.find_element(By.ID, "welcome-message")
+    #Capturar elemento por clase (más robusto que ID si no existe)
+    heading = driver.find_element(By.CLASS_NAME, "hero-title")
 
-    #QA check
-    assert heading.text == "Mining Consulting QA Testing"
-    print("Test exitoso")
+

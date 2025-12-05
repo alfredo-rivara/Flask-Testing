@@ -1,3 +1,7 @@
 tests/test_report.md
 tests/__pycache__/test_integration.cpython-312-pytest-8.4.2.pyc
 tests/__pycache__/test_integration.cpython-312-pytest-9.0.1.pyc
+app/__pycache__/app.cpython-312.pyc
+app/__pycache__/clasificador_logic.cpython-312.pyc
+tests/__pycache__/test_component.cpython-312-pytest-8.4.2.pyc
+tests/__pycache__/test_unit.cpython-312-pytest-8.4.2.pyc
